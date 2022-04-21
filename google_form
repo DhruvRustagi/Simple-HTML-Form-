@@ -20,7 +20,8 @@
 
             <br>
             Date of Birth : <br>
-            <label for="date"> Date : </label>
+            <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" min="1901/01/01" max="2022/04/22">
+            <!-- <label for="date"> Date : </label>
             <select id="date" name="date"> 
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -96,7 +97,7 @@
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
-            </select>
+            </select> -->
 
             <br>
             <br>
@@ -129,21 +130,27 @@
             var ln = document.getElementById('ln').value
             console.log("Last Name : " + ln)
 
-            var date = document.getElementById('date').value
-            var month = document.getElementById('month').value
-            var year = document.getElementById('year').value
+            var dob = document.getElementById('dob').value
+            // var month = document.getElementById('month').value
+            // var year = document.getElementById('year').value
             
-            console.log("Date of Birth : " + date + "-" + month + "-" + year)
+            // console.log("Date of Birth : " + date + "-" + month + "-" + year)
+            console.log(dob)
 
-            var dob_in_format = month+"/"+date+"/"+year;
-
-            var dob = new Date(dob_in_format)
-
+            var dob = new Date(dob)
             var month_diff = Date.now() - dob.getTime();
             var age_dt = new Date(month_diff)
             var year_diff = age_dt.getUTCFullYear();
-            var age = Math.abs(year_diff - 1970)
-            console.log("Age : " + age);
+            if(year_diff - 1970 >= 0)
+            {
+                var age = Math.abs(year_diff - 1970)
+                console.log("Age : " + age);
+            }
+            else
+            {
+                console.log("Age : Invalid");
+            }
+            
 
             console.log("Hobbies : ")
             const badminton = document.querySelector('#badminton')
