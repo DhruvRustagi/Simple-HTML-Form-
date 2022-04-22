@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            #footer {
+                position: absolute;
+                bottom: 10px;;
+                left: 10px;
+            }
+        </style>
         <title>
             HTML Form
         </title>
@@ -57,7 +64,12 @@
             
             <input type="submit" value="Submit">
         </form>
-
+        
+        <div id="footer">
+            
+        <span id = "output"></span>
+        </div>
+        
     </body>
     <script>
         var form = document.getElementById('form')
@@ -67,39 +79,39 @@
 
             var fn = document.getElementById('fn').value
             var ln = document.getElementById('ln').value
-            var dob = document.getElementById('dob').value
+            var idob = document.getElementById('dob').value
+            const badminton = document.querySelector('#badminton')
+            const cricket = document.querySelector('#cricket')
+            const volleyball = document.querySelector('#volleyball')
             
-            if(fn == "" || ln == "" || dob == "")
+            if(fn == "" || ln == "" || dob == "" || (badminton.checked == false && cricket.checked == false && volleyball.checked == false))
             {
                 alert("fields are empty, pls fill all fields");
-                return ;
             }
             else{ 
-            console.log("First Name : " + fn)
-            console.log("Last Name : " + ln)
-            console.log(dob)
-            var dob = new Date(dob)
+            
+            var dob = new Date(idob)
             var month_diff = Date.now() - dob.getTime();
             var age_dt = new Date(month_diff)
             var year_diff = age_dt.getUTCFullYear();
             var age = Math.abs(year_diff - 1970)
-            console.log("Age : " + age);
-            console.log("Hobbies : ")
-            const badminton = document.querySelector('#badminton')
+            console.log();
+            console.log()
+            
+            var hobb = ""
             if(badminton.checked) {
-                console.log("badminton");
+                hobb = hobb + "badminton  "
             }
-
-            const cricket = document.querySelector('#cricket')
             if(cricket.checked) {
-                console.log("cricket");
+                hobb = hobb + "cricket  "
             }
-
-            const volleyball = document.querySelector('#volleyball')
             if(volleyball.checked) {
-                console.log("volleyball");
+                hobb = hobb + "volleyball  "
             }
+            var finaloutput = "<h2>Results</h2>" +  "First Name : " + fn + "<br>Last Name : " + ln + "<br>DOB : " + idob + "<br>Age : " + age + "<br>Hobbies : " + hobb;
+            output.innerHTML = finaloutput
         }
+        document.getElementById("form").reset();
         })
     </script>
 </html>
