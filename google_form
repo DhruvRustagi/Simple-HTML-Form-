@@ -2,33 +2,50 @@
 <html>
     <head>
         <style>
+
+            body {
+                text-align: center;
+                font-size: large;
+                color: blueviolet;
+                background-color: aqua;
+            }
             #footer {
                 position: absolute;
                 bottom: 10px;;
                 left: 10px;
+                color: rgb(21, 131, 35);
             }
+            #color {
+                color: black;
+            }
+            #size {
+                font-size: small;
+            }
+
         </style>
         <title>
             HTML Form
         </title>
     </head>
     <body>
+        <div id="color"><h1><p style="text-align: center;">Simple Google Form</p></h1></div>
         <form id="form" > 
 
             <br>
-            <label for="fn"> First Name : </label>
-            <input type="text" id="fn" name="fn">
+            <label for="fn" > First Name : </label>
+            <input type="text" id="fn" name="fn" required="">
             <br>
 
             <br>
             <label for="ln"> Last Name : </label>
-            <input type="text" id="ln" name="ln">
+            <input type="text" id="ln" name="ln" required="">
             <br>
 
             <br>
             Date of Birth : <br>
+            <br>
 
-            <input type="date" id="dob" name="dob" min="1901-01-01">
+            <input type="date" id="dob" name="dob" min="1901-01-01" required="">
 
             <script>
                 var today = new Date();
@@ -52,6 +69,11 @@
             <br>
             Hobbies : 
             <br>
+            <div id="size">
+            (Please select at least one)
+            </div>
+            <br>
+            <div id="options">
             <label for="badminton"> Badminton</label>
             <input type="checkbox" id="badminton" name="badminton">
             
@@ -60,8 +82,9 @@
             
             <label for="volleyball"> Volleyball</label>
             <input type="checkbox" id="volleyball" name="volleyball">
+            </div>
             <br>
-            
+            <br>
             <input type="submit" value="Submit">
         </form>
         
@@ -77,41 +100,41 @@
         form.addEventListener('submit', function(event) {
             event.preventDefault()
 
-            var fn = document.getElementById('fn').value
-            var ln = document.getElementById('ln').value
+            var fn = document.getElementById('fn').value.toUpperCase()
+            var ln = document.getElementById('ln').value.toUpperCase()
             var idob = document.getElementById('dob').value
             const badminton = document.querySelector('#badminton')
             const cricket = document.querySelector('#cricket')
             const volleyball = document.querySelector('#volleyball')
             
-            if(fn == "" || ln == "" || dob == "" || (badminton.checked == false && cricket.checked == false && volleyball.checked == false))
+            if(fn == "" || ln == "" || idob == "" || (badminton.checked == false && cricket.checked == false && volleyball.checked == false))
             {
-                alert("fields are empty, pls fill all fields");
+                alert("FIELDS ARE EMPTY, PLEASE FILL ALL FIELDS!");
+                
             }
-            else{ 
+            else { 
             
-            var dob = new Date(idob)
-            var month_diff = Date.now() - dob.getTime();
-            var age_dt = new Date(month_diff)
-            var year_diff = age_dt.getUTCFullYear();
-            var age = Math.abs(year_diff - 1970)
-            console.log();
-            console.log()
+                var dob = new Date(idob)
+                var month_diff = Date.now() - dob.getTime();
+                var age_dt = new Date(month_diff)
+                var year_diff = age_dt.getUTCFullYear();
+                var age = Math.abs(year_diff - 1970)
             
-            var hobb = ""
-            if(badminton.checked) {
-                hobb = hobb + "badminton  "
+                
+                var hobb = ""
+                if(badminton.checked) {
+                    hobb = hobb + "Badminton  "
+                }
+                if(cricket.checked) {
+                    hobb = hobb + "Cricket  "
+                }
+                if(volleyball.checked) {
+                    hobb = hobb + "Volleyball  "
+                }
+                var finaloutput = "<h2>Results</h2>" +  "First Name : " + fn + "<br>Last Name : " + ln + "<br>DOB : " + idob + "<br>Age : " + age + "<br>Hobbies : " + hobb;
+                output.innerHTML = finaloutput
+                document.getElementById("form").reset();
             }
-            if(cricket.checked) {
-                hobb = hobb + "cricket  "
-            }
-            if(volleyball.checked) {
-                hobb = hobb + "volleyball  "
-            }
-            var finaloutput = "<h2>Results</h2>" +  "First Name : " + fn + "<br>Last Name : " + ln + "<br>DOB : " + idob + "<br>Age : " + age + "<br>Hobbies : " + hobb;
-            output.innerHTML = finaloutput
-        }
-        document.getElementById("form").reset();
         })
     </script>
 </html>
