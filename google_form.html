@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="google_form.css">
+        <title>
+            HTML Form
+        </title>
+    </head>
+    <body>
+        <div class="card">
+        <div id="cardbgcolor">
+        <br>
+        <div id="color"><h2><p style="text-align: center;">Simple Google Form</p></h2></div>
+        
+        <form id="form"> 
+
+            <br>
+            <input type="text" id="fn" name="fn" required="" placeholder="First Name" size="25"  style="color: white;">
+            <br>
+
+            <br>
+            <input type="text" id="ln" name="ln" required="" placeholder="Last Name" size="25" style="color: white;">
+            <br>
+
+            <br>
+            Date of Birth : <br>
+            <br>
+
+            <input type="date" id="dob" name="dob" min="1901-01-01" required="">
+
+            <script src="age.js"></script>
+            <br>
+            <br>
+            Hobbies : 
+            <br>
+            <div id="size">
+            (Please select at least one)
+            </div>
+            <br>
+            <div id="options">
+            <label for="badminton"> Badminton</label>
+            <input type="checkbox" id="badminton" name="badminton">
+            
+            <label for="cricket"> Cricket</label>
+            <input type="checkbox" id="cricket" name="cricket">
+            
+            <label for="volleyball"> Volleyball</label>
+            <input type="checkbox" id="volleyball" name="volleyball">
+            </div>
+            <br>
+            <br>
+            <input type="submit" value="SUBMIT" style="color: white;">
+            <br>
+            <br>
+        </form>
+        </div>
+        </div>
+        
+        <div id="footer">
+            
+        <span id = "output"></span>
+        </div>
+        
+    </body>
+    <script src="print.js"></script>
+</html>
