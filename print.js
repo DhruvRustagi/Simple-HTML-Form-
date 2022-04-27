@@ -34,8 +34,7 @@ var form = document.getElementById('form')
                 if(volleyball.checked) {
                     hobb = hobb + "Volleyball  "
                 }
-                var finaloutput = "<h2>Results</h2>" +  "First Name : " + fn + "<br>Last Name : " + ln + "<br>DOB : " + idob + "<br>Age : " + age + "<br>Hobbies : " + hobb;
-                output.innerHTML = finaloutput
-                document.getElementById("form").reset();
+                var finaloutput = "<h2>Results</h2>" +  "First Name : " + fn + "<br><br>Last Name : " + ln + "<br><br>DOB : " + idob + "<br><br>Age : " + age + "<br><br>Hobbies : " + hobb + "<br><br><br>";
+                document.getElementById("form").innerHTML = finaloutput;
             }
         })
